@@ -1,7 +1,7 @@
 import numpy as np
 import trimesh
 
-mesh_file = "msh.ply"
+mesh_file = "mesh.ply"
 pts_file = "pts.csv"
 out_file = "msh_fixed.ply"
 
@@ -18,7 +18,7 @@ def scaler(pts, scale_factor=1.1):
 
 
 msh = trimesh.load_mesh(mesh_file)
-with open(points_file) as f:
+with open(pts_file) as f:
     pts = np.asarray([[float(e) for e in row.strip().split(",")] for row in f.readlines()[1:]])[:,:3]
 
 msh.vertices = trimesh.transform_points(msh.vertices, np.linalg.inv(scaler(pts)))
