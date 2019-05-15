@@ -55,7 +55,7 @@
           var loader = new THREE.PLYLoader();
           loader.load( 'poisson.ply', function ( geometry ) {
             geometry.computeVertexNormals();
-            var material = new THREE.MeshPhongMaterial({color: 0x888888, wireframe: false});
+            var material = new THREE.MeshPhongMaterial({color: 0x888888, wireframe: true});
             var mesh = new THREE.Mesh(geometry, material);
             /*mesh.scale.multiplyScalar( 120 );
             mesh.position.z = -57;
@@ -70,7 +70,7 @@
             render()
           } );
         
-          var options = { color: 0x00ff00, size: 0.25 }
+          var options = { vertexColors: THREE.VertexColors, size: 0.25 }
           await addCSV('./sfm.csv', options)
 
           plane = new THREE.Mesh(
